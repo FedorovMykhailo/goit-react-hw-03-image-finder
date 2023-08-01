@@ -4,7 +4,7 @@ import ImageGalery from "./ImageGallery/ImageGallery";
 import Button from "./Button/Button";
 import Loader from "./Loader/Loader";
 import Modal from "./Modal/Modal";
-import API from "../api/services"
+import {fetchPixabay } from "../api/services"
 
 
 
@@ -28,7 +28,7 @@ class App extends Component {
        this.setState({ isLoading: true });
        console.log(this.state.isLoading);
       try {
-        const galery = await API.fetchPixabay(this.state.query, this.state.page);
+        const galery = await fetchPixabay(this.state.query, this.state.page);
         console.log(galery.hits);
         // galery.then((responce) => this.setState(prev => { return { galery: [...prev.galery, ...responce.hits] } }));
         this.setState(prev => { return { galery: [...prev.galery, ...galery.hits] } });
