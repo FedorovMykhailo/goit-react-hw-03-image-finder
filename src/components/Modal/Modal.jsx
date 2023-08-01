@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 
-
-
 class Modal extends Component {
 
     
@@ -13,8 +11,9 @@ class Modal extends Component {
         document.addEventListener("keydown",this.handleModalClose)
     }
 
-handleModalClose  = (evt) => {
-        if (evt.code==="Escape"){this.props.clickOverlay()}}
+    handleModalClose  = (evt) => {
+        if (evt.code === "Escape") { this.props.clickOverlay() }
+    }
 
     render() {
         const {img, desc, clickOverlay} = this.props

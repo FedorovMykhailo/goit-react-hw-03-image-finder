@@ -79,12 +79,9 @@ class App extends Component {
      //const {isLoading} = this.state
     return (
    
-      <div className="App">
+    <div className="App">
        
-      <Searchbar submit={this.handleSubmit}></Searchbar>
-        {/* {this.state.isLoading && <Loader></Loader>}  */}
-        {/* {this.state.isLoading && <p>Loading...</p>}  */}
-
+        <Searchbar submit={this.handleSubmit}></Searchbar>
         {this.state.error && <p>Whoops, something went wrong: {this.state.error.message}</p>}
         <ImageGalery galeryItems={this.state.galery} onModalClick={this.handleModal}></ImageGalery>
         {this.state.isLoading ? <Loader></Loader> : this.state.galery.length > 0 && <Button clickLoadMore={this.handleLoadMore}></Button>}
@@ -94,6 +91,5 @@ class App extends Component {
 
   }
 }
-
 
 export default App

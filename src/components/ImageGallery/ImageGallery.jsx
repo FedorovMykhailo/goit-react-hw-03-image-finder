@@ -12,12 +12,13 @@ class ImageGalery extends Component {
                 onClick = {onModalClick}
             ></ImageGaleryItem>
         })
-        return <>
-        <ul className="ImageGallery">
-            {gal}
-        </ul></>
-        }
+        return  <>
+                    <ul className="ImageGallery">
+                        {gal}
+                    </ul>
+                </>
     }
+}
 
 
 export default ImageGalery
