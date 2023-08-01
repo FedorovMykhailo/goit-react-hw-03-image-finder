@@ -12,5 +12,5 @@ export const fetchPixabay = async (query, page)  => {
     // console.log(response.data.hits);
 return response.data
 }
-module.exports = { fetchPixabay, };
-// export default { fetchPixabay, };
+// module.exports = { fetchPixabay, };
+export default { fetchPixabay, };
