@@ -13,4 +13,4 @@ axios.defaults.baseURL = `https://pixabay.com/api/`;
 return response.data
 }
 // module.exports = { fetchPixabay, };
-export  { fetchPixabay, };
+export default  fetchPixabay;
