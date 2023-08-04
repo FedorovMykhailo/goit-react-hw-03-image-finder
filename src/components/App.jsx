@@ -6,9 +6,6 @@ import Loader from "./Loader/Loader";
 import Modal from "./Modal/Modal";
 import fetchPixabay from "../api/services"
 
-
-
-
 class App extends Component {
 
   state = {
@@ -24,21 +21,15 @@ class App extends Component {
  async componentDidUpdate(prevProps, prevState) {
     
      if (prevState.query !== this.state.query || prevState.page !== this.state.page) {
-        // if (prevState !== this.state) {
        this.setState({ isLoading: true });
-       console.log(this.state.isLoading);
       try {
         const galery = await fetchPixabay(this.state.query, this.state.page);
-        console.log(galery.hits);
-        // galery.then((responce) => this.setState(prev => { return { galery: [...prev.galery, ...responce.hits] } }));
         this.setState(prev => { return { galery: [...prev.galery, ...galery.hits] } });
         this.setState( {isLoading: false } )
       } catch (error) {
         this.setState({ error });
       }
       finally {
-        console.log("out");
-        console.log(this.state.isLoading);
         this.setState( {isLoading: false } )
       }
     }
@@ -47,15 +38,12 @@ class App extends Component {
   handleSubmit = (evt) => {
     evt.preventDefault();
     const query = evt.currentTarget.elements[1].value
-    console.log(this.setState.query);
-    console.log(query);
     if (this.state.query !== query) {
       this.setState({page:1, galery:[], query: query})
     }
   }
 
   handleLoadMore = () => {
-    console.log(this.state);
     this.setState((prev) => { return {page: prev.page+1}});
   }
 
@@ -68,7 +56,7 @@ class App extends Component {
   handleCloseModal = (evt) => {
     console.log(evt.target.attributes);
     if (evt.currentTarget===evt.target||evt.code === "Escape") this.setState({ isModal: false} )
-    }
+  }
   
   render() 
   {
