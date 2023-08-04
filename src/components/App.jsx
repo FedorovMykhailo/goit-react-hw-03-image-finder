@@ -44,15 +44,14 @@ class App extends Component {
     }
   }
 
-
-
   handleSubmit = (evt) => {
     evt.preventDefault();
     const query = evt.currentTarget.elements[1].value
-    if (this.setState.query !== query) {
+    console.log(this.setState.query);
+    console.log(query);
+    if (this.state.query !== query) {
       this.setState({page:1, galery:[], query: query})
     }
-    // this.setState()
   }
 
   handleLoadMore = () => {
@@ -63,24 +62,18 @@ class App extends Component {
   handleModal = (evt) => {
     const src = evt.currentTarget.attributes.src.value;
     const alt = evt.currentTarget.attributes.alt.value;
-    this.setState((prev) => {
-      return { isModal: true, modal: {img: src, desc: alt} }
-    })
-  }
-    handleCloseModal = (evt) => {
-   
-    this.setState((prev) => {
-      return { isModal: false} 
-    })
+    this.setState({ isModal: true, modal: {img: src, desc: alt}})
   }
 
+  handleCloseModal = (evt) => {
+    console.log(evt.target.attributes);
+    if (evt.currentTarget===evt.target||evt.code === "Escape") this.setState({ isModal: false} )
+    }
+  
   render() 
   {
-     //const {isLoading} = this.state
     return (
-   
-    <div className="App">
-       
+    <div className="App">    
         <Searchbar submit={this.handleSubmit}></Searchbar>
         {this.state.error && <p>Whoops, something went wrong: {this.state.error.message}</p>}
         <ImageGalery galeryItems={this.state.galery} onModalClick={this.handleModal}></ImageGalery>
@@ -88,7 +81,6 @@ class App extends Component {
         {this.state.isModal && <Modal img={this.state.modal.img} desc={this.state.modal.desc} clickOverlay={this.handleCloseModal}></Modal>}
     </div>
   );
-
   }
 }
 

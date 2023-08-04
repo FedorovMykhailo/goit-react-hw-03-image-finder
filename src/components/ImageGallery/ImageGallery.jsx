@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ImageGaleryItem from '../ImageGalleryItem/ImageGalleryItem'
+import PropTypes from "prop-types";
 
 class ImageGalery extends Component {
     render() {
@@ -20,5 +21,9 @@ class ImageGalery extends Component {
     }
 }
 
+ImageGalery.propTypes = {
+    galeryItems: PropTypes.arrayOf(PropTypes.object).isRequired,
+    onModalClick: PropTypes.func.isRequired,
+}
 
 export default ImageGalery

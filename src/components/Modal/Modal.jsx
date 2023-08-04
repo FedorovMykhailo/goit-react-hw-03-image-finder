@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class Modal extends Component {
 
@@ -8,11 +9,11 @@ class Modal extends Component {
     }
     
     componentWillUnmount (){
-        document.addEventListener("keydown",this.handleModalClose)
+        document.removeEventListener("keydown",this.handleModalClose)
     }
 
-    handleModalClose  = (evt) => {
-        if (evt.code === "Escape") { this.props.clickOverlay() }
+    handleModalClose = (evt) => {
+         this.props.clickOverlay(evt) 
     }
 
     render() {
@@ -23,6 +24,12 @@ class Modal extends Component {
                     </div>
                 </div>
     }
+}
+
+Modal.propTypes = {
+    img: PropTypes.string.isRequired,
+    desc: PropTypes.string.isRequired,
+    clickOverlay: PropTypes.func.isRequired,
 }
 
 export default Modal

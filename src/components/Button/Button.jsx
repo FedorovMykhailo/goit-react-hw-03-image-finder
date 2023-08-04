@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class Button extends Component {
     render() {
@@ -7,6 +8,10 @@ class Button extends Component {
                     <button className="Button" onClick={clickLoadMore}> Load More ...</button>
                 </>
     }
+}
+
+Button.propTypes = {
+    clickLoadMore: PropTypes.func.isRequired,
 }
 
 export default Button
